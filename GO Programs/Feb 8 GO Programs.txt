@@ -1,0 +1,207 @@
+package main
+import "fmt"
+
+type book struct{
+  bid int
+  bname string
+  bauthor string
+  price float32
+}
+
+func main() {
+  var b[10] book
+  var n int 
+  fmt.Print("Enter the number of books:")
+  fmt.Scan(&n)
+  for i := 0; i < n; i++ {
+    fmt.Print("\nEnter book ID:")
+    fmt.Scan(&b[i].bid)
+    fmt.Print("\nEnter book name:")
+    fmt.Scan(&b[i].bname)
+    fmt.Print("\nEnter book author:")
+    fmt.Scan(&b[i].bauthor)
+    fmt.Print("\nEnter book price:")
+    fmt.Scan(&b[i].price)
+  }
+  fmt.Println("\n\nBook Information")
+  fmt.Println("\nBOOK ID  TITLE       AUTHOR      PRICE")
+  fmt.Println("---------------------------------------")
+  for i := 0; i < n; i++ {
+      fmt.Println(" "b[i].bid, "\t\t", b[i].bname, "\t\t", b[i].bauthor, "\t\t", b[i].price)
+  }
+}
+
+
+
+
+
+package main
+import "fmt"
+
+type studinfo interface{
+    getinfo()
+}
+
+type studrecord interface{
+    getrecord()
+}
+
+type student interface{
+    studinfo
+    studrecord
+}
+
+type student struct{
+    sname string
+    sroll int
+    per float32
+}
+
+func (s student) getinfo(){
+    fmt.Printf("Student Roll number: %d\n", s.sroll)
+    fmt.Printf("Student Name: %s\n", s.sname)
+    fmt.Printf("Student Percentage: %f\n", s.per)
+}
+
+func (s student) getrecord(){
+    tot := s.per * 3
+    fmt.Printf("Total Marks: %f\n", tot)
+}
+
+func main(){
+    s1 := student{
+        sname : "NSB",
+        sroll : 111,
+        per : 88.99,
+    }
+    var ss student = s1
+    ss.getinfo()
+    ss.getrecord()
+}
+
+
+
+
+
+
+
+
+package main
+import "fmt"
+
+type studinfo interface {
+    getinfo()
+}
+
+type studrecord interface {
+    getrecord()
+}
+
+type student struct {
+    studinfo
+    studrecord
+    sname string
+    sroll int
+    per float32
+}
+
+func (s *student) getinfo() {
+    fmt.Printf("Student Roll number: %d\n", s.sroll)
+    fmt.Printf("Student Name: %s\n", s.sname)
+    fmt.Printf("Student Percentage: %f\n", s.per)
+}
+
+func (s *student) getrecord() {
+    tot := s.per * 3
+    fmt.Printf("Total Marks: %f\n", tot)
+}
+
+func main() {
+    s1 := student{
+        sname: "NSB",
+        sroll: 111,
+        per:   88.99,
+    }
+    var ss student = s1
+    ss.getinfo()
+    ss.getrecord()
+}
+
+
+
+
+
+
+
+
+package main
+import "fmt"
+
+type shape interface{
+    areac() float32
+    peric() float32
+}
+
+type shape_info struct{
+ r float32
+}
+
+func(s shape_info) areac()float32{
+    return ((3.14) * (s.r) * (s.r))
+}
+
+func(s shape_info) peric() float32{
+    return (2 * 3.14 * (s.r))
+}
+
+func main(){
+    var sh shape
+    sh = shape_info{3.2}
+    fmt.Println("Area of Circle:",sh.areac())
+    fmt.Println("Circumference of Circle:", sh.peric())
+}
+
+
+
+
+
+
+
+package main
+import "fmt"
+
+type shape interface{
+    area_sqr() float32
+    area_rect() float32
+    vol_cube() float32
+    vol_cuboid() float32
+}
+
+type shape_info struct{
+    side, l, b, h, s1, l1, b1 float32
+}
+
+func (s shape_info) area_sqr() float32{
+    return ((s.side) * (s.side))
+}
+
+func (s shape_info) area_rect() float32{
+    return ((s.l) * (s.b))
+}
+
+func (s shape_info) vol_cube() float32{
+    return ((s.s1) * (s.s1) * (s.s1))
+}
+
+func (s shape_info) vol_cuboid() float32{
+    return ((s.l1) * (s.b1) * (s.h))
+}
+
+func main(){
+    var sh shape
+    sh = shape_info{3.1, 2.2, 1.2, 3.0, 1, 3, 4}
+    fmt.Println("Area of Square:", sh.area_sqr())
+    fmt.Println("Area of Rectangle:", sh.area_rect())
+    fmt.Println("Volume of Cube:", sh.vol_cube())
+    fmt.Println("Volume of Cuboid:", sh.vol_cuboid())
+}

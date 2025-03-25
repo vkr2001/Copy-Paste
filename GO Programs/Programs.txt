@@ -1,0 +1,177 @@
+package main
+import "fmt"
+func main() {
+	var a, b, n int
+	fmt.Println("Enter your choice:\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division")
+	fmt.Scanln(&n)
+	fmt.Println("Enter the value of A and B:")
+	fmt.Scanln(&a, &b)
+	switch n {
+	case 1:
+		fmt.Println("Addition: ", a+b)
+		break
+	case 2:
+		fmt.Println("Subtraction: ", a-b)
+		break
+	case 3:
+		fmt.Println("Multiplication: ", a*b)
+		break
+	case 4:
+		fmt.Println("Division: ", float32(a/b))
+		break
+	case 5: fmt.Println("Modulus: ", float32(a%b))
+	    break
+	default: fmt.Println("Not Valid")
+	}
+   }
+
+
+
+package main
+import "fmt"
+type student struct{
+    roll int
+    name string
+    m1, m2, m3 float64
+}
+func main(){
+    var s1 student
+    var total float64
+    var avg float64
+    fmt.Println("Enter the roll number: ")
+    fmt.Scanln(&s1.roll)
+    fmt.Println("Enter the student name: ")
+    fmt.Scanln(&s1.name)
+    fmt.Println("Enter the marks of three subjects: ")
+    fmt.Scanln(&s1.m1,&s1.m2,&s1.m3)
+    total = s1.m1 + s1.m2 + s1.m3
+    avg = total/3
+    fmt.Println("Roll number:", s1.roll)
+    fmt.Println("Name:", s1.name)
+    fmt.Println("Marks:",s1.m1,"",s1.m2,"",s1.m3)
+    fmt.Println("Total:",total)
+    fmt.Println("Average:",avg)
+}
+
+
+
+
+package main
+import "fmt"
+type student struct{
+    roll int
+    name string
+    m1, m2, m3 float64
+}
+func main(){
+    var n int
+    var s1[10] student
+    var total[10] float64
+    var avg[10] float64
+    fmt.Println("Enter the number of students: ")
+    fmt.Scanln(&n)
+    for i:=0; i<n; i++ {
+      fmt.Println("Enter the roll number: ")
+      fmt.Scanln(&s1[i].roll)
+      fmt.Println("Enter the student name: ")
+      fmt.Scanln(&s1[i].name)
+      fmt.Println("Enter the marks of three subjects: ")
+      fmt.Scanln(&s1[i].m1,&s1[i].m2,&s1[i].m3)
+      total[i] = s1[i].m1 + s1[i].m2 + s1[i].m3
+      avg[i] = total[i]/3
+    }
+    for j:=0; j<n; j++ {
+      fmt.Println("Roll number:", s1[j].roll)
+      fmt.Println("Name:", s1[j].name)
+      fmt.Println("Marks:",s1[j].m1,"",s1[j].m2,"",s1[j].m3)
+      fmt.Println("Total:",total[j])
+      fmt.Println("Average:",avg[j])
+  }
+ }
+
+
+
+
+
+
+package main
+import "fmt"
+func main(){
+    var f1, f2, f3, n int 
+    f1 = 0
+    f2 = 1
+    f3 = f1 + f2
+    fmt.Println("Enter the number of terms to print:")
+    fmt.Scanln(&n)
+    fmt.Println("Fibonacci Series:")
+    fmt.Print(f1," ",f2)
+    for i:=3; i<=n; i++ {
+        fmt.Print(" ",f3)
+        f1 = f2
+        f2 = f3
+        f3 = f1 + f2
+    }
+ }
+
+
+
+
+package main
+import "fmt"
+func isPalindrome(n int) int {
+    var rev, rem, org int
+    rev = 0
+    org = n
+    for(n != 0) {
+        rem = n % 10
+        rev = rev * 10 + rem
+        n /= 10
+    }
+    if (org == rev) {
+        return 1
+    }else{
+        return 0
+    }
+}
+func main(){
+    var n, r int
+    fmt.Println("Enter the number:")
+    fmt.Scanln(&n)
+    r = isPalindrome(n)
+    if (r == 1) {
+        fmt.Printf("%d is Palidrome number.\n", n)
+    }else{
+        fmt.Printf("%d is not a Palindrome number.\n", n)
+    }
+ }
+
+
+
+
+
+
+
+
+package main
+import "fmt"
+
+func sod(num int) int{
+    if (num == 0){
+        return 0
+    }else{
+        return ((num % 10) + sod(num / 10))
+    }
+}
+func main(){
+    var n, r int
+    fmt.Print("Enter the number:")
+    fmt.Scanln(&n)
+    fmt.Print("Sum of digits: ")
+    r = sod(n)
+    fmt.Println(r)
+}
+
+
+
+
+
