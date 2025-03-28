@@ -1,0 +1,20 @@
+1. Simple LED Blink (led.py)
+=============================
+import RPi.GPIO as GPIO  # Import the GPIO library
+import time  # Import time library for delays
+
+# Disable GPIO warnings and set numbering mode
+GPIO.setwarnings(False)  # Turn off warnings
+GPIO.setmode(GPIO.BCM)  # Use Broadcom chip numbering
+
+LED_PIN = 4  # GPIO pin 4 is connected to LED
+GPIO.setup(LED_PIN, GPIO.OUT)  # Set pin as output
+
+try:
+    while True:  # Infinite loop
+        GPIO.output(LED_PIN, GPIO.HIGH)  # Turn LED on
+        time.sleep(3)  # Wait 3 seconds
+        GPIO.output(LED_PIN, GPIO.LOW)  # Turn LED off
+        time.sleep(3)  # Wait 3 seconds
+except KeyboardInterrupt:
+    GPIO.cleanup()  # Clean up GPIO on CTRL+C exit  

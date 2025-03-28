@@ -1,0 +1,35 @@
+2. Two LED Toggle (LEDToggledemo.py)
+==================================
+import RPi.GPIO as GPIO
+import time
+
+# Set up GPIO mode and disable warnings
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+# Define GPIO pins for two LEDs
+LED1_PIN = 17
+LED2_PIN = 27
+
+# Set pins as outputs
+GPIO.setup(LED1_PIN, GPIO.OUT)
+GPIO.setup(LED2_PIN, GPIO.OUT)
+
+try:
+    while True:
+        # Turn on LED1, turn off LED2
+        GPIO.output(LED1_PIN, GPIO.HIGH)
+        GPIO.output(LED2_PIN, GPIO.LOW)
+        print("LED1 ON, LED2 OFF")  # Status message
+        time.sleep(1)  # Wait 1 second
+        
+        # Turn off LED1, turn on LED2
+        GPIO.output(LED1_PIN, GPIO.LOW)
+        GPIO.output(LED2_PIN, GPIO.HIGH)
+        print("LED1 OFF, LED2 ON")  # Status message
+        time.sleep(1)  # Wait 1 second
+
+except KeyboardInterrupt:
+    # Clean up GPIO settings before exiting
+    GPIO.cleanup()
+    print("Program exited cleanly")

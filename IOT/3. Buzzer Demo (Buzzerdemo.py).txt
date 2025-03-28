@@ -1,0 +1,23 @@
+3. Buzzer Demo (Buzzerdemo.py)
+==========================================
+
+import RPi.GPIO as GPIO
+import time
+
+# Set up GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+BUZZER_PIN = 23  # GPIO pin connected to buzzer
+GPIO.setup(BUZZER_PIN, GPIO.OUT)  # Set as output
+
+try:
+    while True:
+        # Toggle buzzer state
+        GPIO.output(BUZZER_PIN, GPIO.HIGH)  # Buzzer on
+        time.sleep(0.5)  # Shorter delay for better sound
+        GPIO.output(BUZZER_PIN, GPIO.LOW)  # Buzzer off
+        time.sleep(0.5)
+        
+except KeyboardInterrupt:
+    GPIO.cleanup()  # Clean up on exit
